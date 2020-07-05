@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE repositories SYSTEM "/dtd/repositories.dtd">
+<repositories xmlns="" version="1.0">
+  <repo quality="experimental" status="unofficial">
+    <name>blueswill-overlay</name>
+    <description lang="en">blueswill's personal overlay</description>
+    <homepage>https://github.com/blueswill/blueswill-overlay</homepage>
+    <owner type="person">
+      <email>yy_swhc@outlook.com</email>
+      <name>blueswill</name>
+    </owner>
+    <source type="git">git://github.com/blueswill/blueswill-overlay.git</source>
+  </repo>
+</repositories>
