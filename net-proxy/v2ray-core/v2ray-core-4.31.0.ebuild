@@ -382,7 +382,8 @@ src_install() {
 	doins "$src/geosite.dat"
 	doins "$src/geoip.dat"
 	newinitd "${FILESDIR}/v2ray.initd" v2ray
-	systemd_dounit "$src/systemd/v2ray.service"
+	systemd_dounit "$src/systemd/system/v2ray.service"
+	systemd_dounit "$src/systemd/system/v2ray@.service"
 }
 
 pkg_postinst() {
