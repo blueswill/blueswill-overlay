@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>yy_swhc@outlook.com</email>
+		<name>swhc</name>
+	</maintainer>
+	<use>
+		<flag name="threadpool">use oatpp memory-pools instead</flag>
+	</use>
+</pkgmetadata>
