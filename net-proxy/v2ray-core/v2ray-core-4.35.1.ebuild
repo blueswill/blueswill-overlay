@@ -341,11 +341,10 @@ EGO_SUM=("cloud.google.com/go v0.26.0/go.mod h1:aQUYkXzVsufM+DwF1aE+0xfcU+56JwCa
 "sourcegraph.com/sqs/pbtypes v0.0.0-20180604144634-d3ebe8f20ae4/go.mod h1:ketZ/q3QxT9HOBeFhu6RdvsftgpsbFHBF5Cas6cDKZ0=")
 
 
-inherit go-module golang-vcs-snapshot systemd
+inherit go-module systemd
 
 go-module_set_globals
 
-EGO_PN="github.com/v2fly/v2ray-core/v4"
 DESCRIPTION="A platform for building proxies to bypass network restrictions"
 HOMEPAGE="https://github.com/v2fly/v2ray-core"
 SRC_URI="https://github.com/v2fly/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz
@@ -356,33 +355,17 @@ SLOT="0"
 KEYWORDS="amd64"
 IUSE=""
 
-DEPEND="dev-lang/go"
-BDEPEND="${DEPEND}"
-
-src_prepare() {
-	default
-	pushd "${S}"
-	cp src/${EGO_PN}/go.{mod,sum} .
-	popd
+src_unpack() {
 	go-module_src_unpack
-	pushd "${S}"
-	rm go.{mod,sum}
-	popd
 }
 
 src_compile() {
-	export GOPATH="${WORKDIR}/${P}:$(get_golibdir_gopath)"
-	export GOCACHE="${T}/go-cache"
-	export GO111MODULE=""
-	pushd "${S}/src/${EGO_PN}"
-	go mod vendor || die
-	popd
-	go build -v -work -x ${EGO_BUILD_FLAGS} -o v2ray "${EGO_PN}/main" || die
-	go build -v -work -x ${EGO_BUILD_FLAGS} -o v2ctl "${EGO_PN}/infra/control/main" || die
+	go build -v -work -x ${EGO_BUILD_FLAGS} -o v2ray ./main || die
+	go build -v -work -x ${EGO_BUILD_FLAGS} -o v2ctl ./infra/control/main || die
 }
 
 src_install() {
-	local src="$S/src/${EGO_PN}/release/config"
+	local src=release/config
 	dobin v2ray
 	dobin v2ctl
 	dodir /etc/v2ray
@@ -390,8 +373,6 @@ src_install() {
 	doins "$src/config.json"
 	doins "$src/vpoint_socks_vmess.json"
 	doins "$src/vpoint_vmess_freedom.json"
-	doins "$src/geosite.dat"
-	doins "$src/geoip.dat"
 	newinitd "${FILESDIR}/v2ray.initd" v2ray
 	systemd_dounit "$src/systemd/system/v2ray.service"
 	systemd_dounit "$src/systemd/system/v2ray@.service"
