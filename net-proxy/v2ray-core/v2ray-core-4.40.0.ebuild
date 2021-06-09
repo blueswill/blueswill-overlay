@@ -589,7 +589,10 @@ IUSE=""
 
 DEPEND="net-proxy/v2ray-domain-list-community
 		net-proxy/v2ray-geoip"
-RDEPEND="${DEPEND}"
+RDEPEND="
+	${DEPEND}
+	acct-user/v2ray
+	acct-group/v2ray"
 BDEPEND="dev-lang/go"
 
 src_unpack() {
@@ -614,10 +617,4 @@ src_install() {
 	newconfd "${FILESDIR}/v2ray.conf" v2ray
 	systemd_dounit "$src/systemd/system/v2ray.service"
 	systemd_dounit "$src/systemd/system/v2ray@.service"
-}
-
-pkg_postinst() {
-	elog "You may need to add v2ray User&Group for security concerns."
-	elog "Then you need to modify the /lib/systemd/system/v2ray.service for systemd user"
-	elog "and /etc/init.d/v2ray for openRC user"
 }

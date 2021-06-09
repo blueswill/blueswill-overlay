@@ -6,9 +6,10 @@ _CONF=${v2ray_conf:-/etc/v2ray/config.json}
 
 command="/usr/bin/env V2RAY_LOCATION_ASSET=/etc/v2ray /usr/bin/v2ray"
 command_args="-config ${_CONF}"
+command_user="v2ray:v2ray"
 command_args_background="true"
 pidfile="/run/${RC_SVCNAME}.pid"
-start_stop_daemon_args="--background --make-pidfile --stderr /var/log/${RC_SVCNAME}.log --stdout /var/log/${RC_SVCNAME}.log"
+start_stop_daemon_args="--background --make-pidfile"
 name="V2Ray Proxy Daemon"
 depend() {
 	need net
