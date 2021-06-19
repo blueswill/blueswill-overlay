@@ -4,7 +4,7 @@
 
 _CONF=${v2ray_conf:-/etc/v2ray/config.json}
 
-command="/usr/bin/env V2RAY_LOCATION_ASSET=/etc/v2ray /usr/bin/v2ray"
+command="/usr/bin/env V2RAY_LOCATION_ASSET=/usr/share/v2ray /usr/bin/v2ray"
 command_args="-config ${_CONF}"
 command_user="v2ray:v2ray"
 command_args_background="true"
