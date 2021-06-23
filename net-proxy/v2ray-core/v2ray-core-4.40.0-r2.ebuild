@@ -599,6 +599,12 @@ src_unpack() {
 	go-module_src_unpack
 }
 
+src_prepare() {
+	default
+	find release/config -name "*.service" -exec \
+		sed -i 's=nobody=v2ray=;s=/local==g;s=/usr/etc=/etc=' {} \;
+}
+
 src_compile() {
 	go build -v -work -x ${EGO_BUILD_FLAGS} -o v2ray ./main || die
 	go build -v -work -x ${EGO_BUILD_FLAGS} -o v2ctl ./infra/control/main || die
@@ -618,3 +624,4 @@ src_install() {
 	systemd_dounit "$src/systemd/system/v2ray.service"
 	systemd_dounit "$src/systemd/system/v2ray@.service"
 }
+
