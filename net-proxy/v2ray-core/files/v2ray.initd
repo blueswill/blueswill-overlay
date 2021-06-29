@@ -7,7 +7,7 @@ _CONF=${v2ray_conf:-/etc/v2ray/config.json}
 _ASSET=/usr/share/v2ray
 command="/usr/bin/env V2RAY_LOCATION_ASSET='${_ASSET}' /usr/bin/v2ray"
 command_args="-config ${_CONF}"
-command_user="v2ray:v2ray"
+command_user="nobody:nogroup"
 command_args_background="true"
 pidfile="/run/${RC_SVCNAME}.pid"
 start_stop_daemon_args="--background --make-pidfile"

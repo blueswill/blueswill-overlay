@@ -589,10 +589,7 @@ IUSE=""
 
 DEPEND="net-proxy/v2ray-domain-list-community
 		net-proxy/v2ray-geoip"
-RDEPEND="
-	${DEPEND}
-	acct-user/v2ray
-	acct-group/v2ray"
+RDEPEND="${DEPEND}"
 BDEPEND="dev-lang/go"
 
 src_unpack() {
@@ -602,7 +599,7 @@ src_unpack() {
 src_prepare() {
 	default
 	find release/config -name "*.service" -exec \
-		sed -i 's=nobody=v2ray=;s=/local==g;s=/usr/etc=/etc=' {} \;
+		sed -i 's=/local==g;s=/usr/etc=/etc=' {} \;
 }
 
 src_compile() {
