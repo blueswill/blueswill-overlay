@@ -348,10 +348,7 @@ IUSE=""
 
 DEPEND="net-proxy/v2ray-domain-list-community
 		net-proxy/v2ray-geoip"
-RDEPEND="
-	${DEPEND}
-	acct-user/xray
-	acct-group/xray"
+RDEPEND="${DEPEND}"
 BDEPEND="dev-lang/go"
 
 src_unpack() {
