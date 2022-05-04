@@ -9,6 +9,6 @@
       <email>yy_swhc@outlook.com</email>
       <name>blueswill</name>
     </owner>
-    <source type="git">git://github.com/blueswill/blueswill-overlay.git</source>
+    <source type="git">https://github.com/blueswill/blueswill-overlay.git</source>
   </repo>
 </repositories>
