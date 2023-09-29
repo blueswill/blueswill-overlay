@@ -6,7 +6,7 @@ _CONF=${v2ray_conf:-/etc/v2ray/config.json}
 
 _ASSET=/usr/share/v2ray
 command="/usr/bin/env V2RAY_LOCATION_ASSET='${_ASSET}' /usr/bin/v2ray"
-command_args="-config ${_CONF}"
+command_args="run -c ${_CONF}"
 command_user="nobody:nogroup"
 command_args_background="true"
 pidfile="/run/${RC_SVCNAME}.pid"
@@ -20,7 +20,7 @@ checkconfig() {
 		eerror "${_CONF} does not exist."
 	fi
         if ! V2RAY_LOCATION_ASSET="${_ASSET}" \
-            v2ray -test -c "${_CONF}" >/dev/null 2>&1; then
+            v2ray test -c "${_CONF}" >/dev/null 2>&1; then
                 eerror "${_CONF} is invalid."
         fi
 }
