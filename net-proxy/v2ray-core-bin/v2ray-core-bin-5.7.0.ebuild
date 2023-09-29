@@ -13,7 +13,8 @@ LICENSE="MIT"
 SLOT="0"
 KEYWORDS="amd64"
 
-RDEPEND="!net-proxy/v2ray-domain-list-community
+RDEPEND="!net-proxy/v2ray-core
+		 !net-proxy/v2ray-domain-list-community
 		 !net-proxy/v2ray-geoip"
 
 DEPEND="${RDEPEND}"
