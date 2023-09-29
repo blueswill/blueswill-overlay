@@ -20,7 +20,7 @@ IUSE=""
 DEPEND="net-proxy/v2ray-domain-list-community
 		net-proxy/v2ray-geoip"
 RDEPEND="${DEPEND}"
-BDEPEND="dev-lang/go"
+BDEPEND="dev-lang/go<1.21"
 
 src_unpack() {
 	go-module_src_unpack
