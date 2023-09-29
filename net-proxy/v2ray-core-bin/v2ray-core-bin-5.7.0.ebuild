@@ -36,7 +36,7 @@ src_install() {
 	insinto /etc/v2ray
 	doins config.json vpoint_socks_vmess.json vpoint_vmess_freedom.json
 	newinitd "${FILESDIR}/v2ray.initd" v2ray
-	newinitd "${FILESDIR}/v2ray.conf" v2ray
+	newconfd "${FILESDIR}/v2ray.conf" v2ray
 	systemd_dounit "systemd/system/v2ray.service"
 	systemd_dounit "systemd/system/v2ray@.service"
 
