@@ -9,10 +9,8 @@ go-module_set_globals
 
 DESCRIPTION="A platform for building proxies to bypass network restrictions"
 HOMEPAGE="https://github.com/v2fly/v2ray-core"
-SRC_URI=(
-	"https://github.com/v2fly/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
-	"https://github.com/blueswill/blueswill-overlay/releases/download/v2ray-core-go-mod/${PV}-deps.tar.xz -> ${P}-deps.tar.xz"
-)
+SRC_URI="https://github.com/v2fly/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz
+https://github.com/blueswill/blueswill-overlay/releases/download/v2ray-core-go-mod/${P}-deps.tar.xz -> ${P}-deps.tar.xz"
 
 LICENSE="MIT"
 SLOT="0"
