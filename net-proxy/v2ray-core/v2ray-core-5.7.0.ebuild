@@ -594,14 +594,13 @@ src_prepare() {
 }
 
 src_compile() {
-	go build -v -work -x ${EGO_BUILD_FLAGS} -o v2ray ./main || die
-	go build -v -work -x ${EGO_BUILD_FLAGS} -o v2ctl ./infra/control/main || die
+	GO_LDFLAGS="-s -w -buildid="
+	CGO_ENABLED=0 go build -v -work -x ${EGO_BUILD_FLAGS} -trimpath -ldflags "$GO_LDFLAGS" -o v2ray ./main || die
 }
 
 src_install() {
 	local src=release/config
 	dobin v2ray
-	dobin v2ctl
 	dodir /etc/v2ray
 	insinto /etc/v2ray
 	doins "$src/config.json"
