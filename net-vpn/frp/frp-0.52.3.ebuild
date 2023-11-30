@@ -9,7 +9,7 @@ HOMEPAGE="https://github.com/fatedier/frp"
 SRC_URI="https://codeload.github.com/fatedier/frp/tar.gz/refs/tags/v${PV} -> ${P}.tar.gz"
 
 LICENSE="Apache-2.0 BSD BSD-2 ISC MIT MPL-2.0"
-SLOT="0"
+SLOT="1"
 KEYWORDS="~amd64 ~loong ~riscv"
 IUSE=""
 S=${WORKDIR}/${P}
