@@ -7,6 +7,7 @@ inherit go-module systemd
 DESCRIPTION="A reverse proxy that exposes a server behind a NAT or firewall to the internet"
 HOMEPAGE="https://github.com/fatedier/frp"
 SRC_URI="https://codeload.github.com/fatedier/frp/tar.gz/refs/tags/v${PV} -> ${P}.tar.gz"
+SRC_URI+=" https://file.s-dl.wang/${P}-deps.tar.xz"
 
 LICENSE="Apache-2.0 BSD BSD-2 ISC MIT MPL-2.0"
 SLOT="1"
@@ -32,6 +33,6 @@ src_install() {
 	systemd_newunit "${FILESDIR}"/frpc_at_.service frpc@.service
 	systemd_newunit "${FILESDIR}"/frps_at_.service frps@.service
 	insinto /etc/frp
-	for x in conf/*.ini; do mv "${x}"{,.example}; done
+	for x in conf/*.toml; do mv "${x}"{,.example}; done
 	doins conf/*.example
 }
