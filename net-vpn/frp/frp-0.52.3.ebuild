@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-inherit go-module systemd
+inherit go-module
 
 DESCRIPTION="A reverse proxy that exposes a server behind a NAT or firewall to the internet"
 HOMEPAGE="https://github.com/fatedier/frp"
@@ -27,12 +27,11 @@ src_compile() {
 
 src_install() {
 	local x
-	dobin bin/{frpc,frps}
+	newbin bin/frpc frpc5
+	newbin bin/frps frps5
 	dodoc README*.md
-	systemd_dounit "${FILESDIR}"/frp{c,s}.service
-	systemd_newunit "${FILESDIR}"/frpc_at_.service frpc@.service
-	systemd_newunit "${FILESDIR}"/frps_at_.service frps@.service
-	insinto /etc/frp
+	insinto /etc/frp5
 	for x in conf/*.toml; do mv "${x}"{,.example}; done
 	doins conf/*.example
+	doinitd ${FILESDIR}/frpc5
 }

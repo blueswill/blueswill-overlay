@@ -1,0 +1,19 @@
+#!/sbin/openrc-run
+# Copyright 1999-2019 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+command="/usr/bin/frpc5"
+command_args="-c /etc/frp5/frpc.toml"
+pidfile="/run/frpc5.pid"
+start_stop_daemon_args="--background --make-pidfile --stderr /var/frp5/frpc.log --stdout /var/frp5/frpc.log"
+name="frpc nat proxy daemon"
+depend() {
+	need net
+}
+checkconfig() {
+	if [ ! -f /etc/frp5/frpc.toml ]; then
+		eerror "/etc/frp5/frpc.toml does not exist."
+	fi
+}
+start_pre() {
+	checkconfig || return 1
+}
