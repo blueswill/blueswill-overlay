@@ -20,7 +20,10 @@ RDEPEND="
 "
 DEPEND="${RDEPEND}"
 BDEPEND="
-	test? ( pytest-datadir[${PYTHON_USEDEP}] )
+	test? (
+		  dev-python/pytest-datadir[${PYTHON_USEDEP}]
+		  dev-util/cmakelang # guru overlay
+	)
 "
 
 distutils_enable_tests pytest
