@@ -24,3 +24,8 @@ BDEPEND=""
 distutils_enable_tests pytest
 
 export PDM_BUILD_SCM_VERSION=${PV}
+
+src_prepare() {
+	echo "__version__ = \"${PV}\"" > cmake_language_server/version.py
+	distutils-r1_src_prepare
+}
