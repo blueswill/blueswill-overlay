@@ -19,10 +19,11 @@ RDEPEND="
 	dev-python/pygls[${PYTHON_USEDEP}]
 "
 DEPEND="${RDEPEND}"
+# dev-util/cmakelang: guru overlay
 BDEPEND="
 	test? (
 		  dev-python/pytest-datadir[${PYTHON_USEDEP}]
-		  dev-util/cmakelang # guru overlay
+		  dev-util/cmakelang
 	)
 "
 
