@@ -22,6 +22,10 @@ RDEPEND="
 	dev-python/jsonschema[${PYTHON_USEDEP}]
 "
 DEPEND="${RDEPEND}"
-BDEPEND=""
+BDEPEND="
+	test? (
+		  dev-python/pyhamcrest[${PYTHON_USEDEP}]
+	)
+"
 
 distutils_enable_tests pytest
