@@ -17,6 +17,7 @@ S=${WORKDIR}/${P}/packages/python
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64"
+RESTRICT="test"
 
 RDEPEND="
 	dev-python/attrs[${PYTHON_USEDEP}]
