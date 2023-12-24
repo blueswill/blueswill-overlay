@@ -19,7 +19,9 @@ RDEPEND="
 	dev-python/pygls[${PYTHON_USEDEP}]
 "
 DEPEND="${RDEPEND}"
-BDEPEND=""
+BDEPEND="
+	test? ( pytest-datadir[${PYTHON_USEDEP}] )
+"
 
 distutils_enable_tests pytest
 
