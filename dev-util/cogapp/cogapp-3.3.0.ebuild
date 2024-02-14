@@ -20,4 +20,6 @@ RDEPEND=""
 DEPEND="${RDEPEND}"
 BDEPEND=""
 
+distutils_enable_tests pytest
+
 S="${WORKDIR}"/cog-${PV}
