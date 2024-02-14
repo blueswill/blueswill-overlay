@@ -19,3 +19,5 @@ KEYWORDS="amd64"
 RDEPEND=""
 DEPEND="${RDEPEND}"
 BDEPEND=""
+
+S="${WORKDIR}"/cog-${PV}
