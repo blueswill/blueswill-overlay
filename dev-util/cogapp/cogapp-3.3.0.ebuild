@@ -14,7 +14,7 @@ SRC_URI="https://codeload.github.com/nedbat/cog/tar.gz/refs/tags/v${PV} -> ${P}.
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS=""
+KEYWORDS="amd64"
 
 RDEPEND=""
 DEPEND="${RDEPEND}"
